@@ -10,6 +10,8 @@ import (
 
 	"github.com/gophercloud/gophercloud"
 	"github.com/gophercloud/gophercloud/openstack"
+	"github.com/gophercloud/gophercloud/openstack/objectstorage/v1/swauth"
+	"github.com/gophercloud/utils/openstack/clientconfig"
 
 	"github.com/hashicorp/terraform/backend"
 	"github.com/hashicorp/terraform/helper/schema"
@@ -22,22 +24,29 @@ func New() backend.Backend {
 		Schema: map[string]*schema.Schema{
 			"auth_url": {
 				Type:        schema.TypeString,
-				Required:    true,
+				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("OS_AUTH_URL", ""),
 				Description: descriptions["auth_url"],
 			},
 
-			"user_id": {
+			"region_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OS_USER_ID", ""),
-				Description: descriptions["user_name"],
+				Description: descriptions["region_name"],
+				DefaultFunc: schema.EnvDefaultFunc("OS_REGION_NAME", ""),
 			},
 
 			"user_name": {
 				Type:        schema.TypeString,
 				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("OS_USERNAME", ""),
+				Description: descriptions["user_name"],
+			},
+
+			"user_id": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				DefaultFunc: schema.EnvDefaultFunc("OS_USER_ID", ""),
 				Description: descriptions["user_name"],
 			},
 
@@ -149,20 +158,6 @@ func New() backend.Backend {
 				Description: descriptions["default_domain"],
 			},
 
-			"cloud": {
-				Type:        schema.TypeString,
-				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OS_CLOUD", ""),
-				Description: descriptions["cloud"],
-			},
-
-			"region_name": {
-				Type:        schema.TypeString,
-				Required:    true,
-				DefaultFunc: schema.EnvDefaultFunc("OS_REGION_NAME", ""),
-				Description: descriptions["region_name"],
-			},
-
 			"insecure": {
 				Type:        schema.TypeBool,
 				Optional:    true,
@@ -195,6 +190,41 @@ func New() backend.Backend {
 				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("OS_KEY", ""),
 				Description: descriptions["key"],
+			},
+
+			"swauth": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				DefaultFunc: schema.EnvDefaultFunc("OS_SWAUTH", false),
+				Description: descriptions["swauth"],
+			},
+
+			"allow_reauth": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				DefaultFunc: schema.EnvDefaultFunc("OS_ALLOW_REAUTH", false),
+				Description: descriptions["allow_reauth"],
+			},
+
+			"cloud": {
+				Type:        schema.TypeString,
+				Optional:    true,
+				DefaultFunc: schema.EnvDefaultFunc("OS_CLOUD", ""),
+				Description: descriptions["cloud"],
+			},
+
+			"max_retries": {
+				Type:        schema.TypeInt,
+				Optional:    true,
+				Default:     0,
+				Description: descriptions["max_retries"],
+			},
+
+			"disable_no_cache_header": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				Default:     false,
+				Description: descriptions["disable_no_cache_header"],
 			},
 
 			"path": {
@@ -258,6 +288,8 @@ func init() {
 	descriptions = map[string]string{
 		"auth_url": "The Identity authentication URL.",
 
+		"region_name": "The name of the Region to use.",
+
 		"user_name": "Username to login with.",
 
 		"user_id": "User ID to login with.",
@@ -292,10 +324,6 @@ func init() {
 
 		"default_domain": "The name of the Domain ID to scope to if no other domain is specified. Defaults to `default` (Identity v3).",
 
-		"cloud": "An entry in a `clouds.yaml` file to use.",
-
-		"region_name": "The name of the Region to use.",
-
 		"insecure": "Trust self-signed certificates.",
 
 		"cacert_file": "A Custom CA certificate.",
@@ -305,6 +333,19 @@ func init() {
 		"cert": "A client certificate to authenticate with.",
 
 		"key": "A client private key to authenticate with.",
+
+		"swauth": "Use Swift's authentication system instead of Keystone.",
+
+		"allow_reauth": "If set to `true`, OpenStack authorization will be perfomed\n" +
+			"automatically, if the initial auth token get expired. This is useful,\n" +
+			"when the token TTL is low or the overall Terraform provider execution\n" +
+			"time expected to be greater than the initial token TTL.",
+
+		"cloud": "An entry in a `clouds.yaml` file to use.",
+
+		"max_retries": "How many times HTTP connection should be retried until giving up.",
+
+		"disable_no_cache_header": "If set to `true`, the HTTP `Cache-Control: no-cache` header will not be added by default to all API requests.",
 
 		"path": "Swift container path to use.",
 
@@ -353,6 +394,8 @@ func (b *Backend) configure(ctx context.Context) error {
 		Password:                    data.Get("password").(string),
 		ProjectDomainID:             data.Get("project_domain_id").(string),
 		ProjectDomainName:           data.Get("project_domain_name").(string),
+		Region:                      data.Get("region_name").(string),
+		Swauth:                      data.Get("swauth").(bool),
 		Token:                       data.Get("token").(string),
 		TenantID:                    data.Get("tenant_id").(string),
 		TenantName:                  data.Get("tenant_name").(string),
@@ -363,6 +406,9 @@ func (b *Backend) configure(ctx context.Context) error {
 		ApplicationCredentialID:     data.Get("application_credential_id").(string),
 		ApplicationCredentialName:   data.Get("application_credential_name").(string),
 		ApplicationCredentialSecret: data.Get("application_credential_secret").(string),
+		AllowReauth:                 data.Get("allow_reauth").(bool),
+		MaxRetries:                  data.Get("max_retries").(int),
+		DisableNoCacheHeader:        data.Get("disable_no_cache_header").(bool),
 	}
 
 	if v, ok := data.GetOkExists("insecure"); ok {
@@ -423,9 +469,20 @@ func (b *Backend) configure(ctx context.Context) error {
 		b.expireSecs = int(expireDur.Seconds())
 	}
 
-	objClient, err := openstack.NewObjectStorageV1(config.OsClient, gophercloud.EndpointOpts{
-		Region: data.Get("region_name").(string),
-	})
+	var objClient *gophercloud.ServiceClient
+	var err error
+	if config.Swauth {
+		objClient, err = swauth.NewObjectStorageV1(config.OsClient, swauth.AuthOpts{
+			User: config.Username,
+			Key:  config.Password,
+		})
+	} else {
+		objClient, err = openstack.NewObjectStorageV1(config.OsClient, gophercloud.EndpointOpts{
+			Region:       config.Region,
+			Availability: clientconfig.GetEndpointType(config.EndpointType),
+		})
+	}
+
 	if err != nil {
 		return err
 	}
