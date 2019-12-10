@@ -2,14 +2,8 @@ module github.com/hashicorp/terraform
 
 require (
 	cloud.google.com/go v0.45.1
-<<<<<<< HEAD
 	github.com/Azure/azure-sdk-for-go v36.2.0+incompatible
 	github.com/Azure/go-autorest/autorest v0.9.2
-	github.com/Unknwon/com v0.0.0-20151008135407-28b053d5a292 // indirect
-=======
-	github.com/Azure/azure-sdk-for-go v21.3.0+incompatible
-	github.com/Azure/go-autorest v10.15.4+incompatible
->>>>>>> Remove openstack terraform provider auth dependency
 	github.com/abdullin/seq v0.0.0-20160510034733-d5467c17e7af // indirect
 	github.com/agext/levenshtein v1.2.2
 	github.com/agl/ed25519 v0.0.0-20150830182803-278e1ec8e8a6 // indirect
@@ -48,8 +42,8 @@ require (
 	github.com/google/btree v1.0.0 // indirect
 	github.com/google/go-cmp v0.3.1
 	github.com/google/uuid v1.1.1
-	github.com/gophercloud/gophercloud v0.6.1-0.20191127023939-978be3847c66
-	github.com/gophercloud/utils v0.0.0-20191127023131-25012218dfd5
+	github.com/gophercloud/gophercloud v0.7.1-0.20191210042042-7aa2e52d21f9
+	github.com/gophercloud/utils v0.0.0-20191129022341-463e26ffa30d
 	github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1 // indirect
 	github.com/gorilla/websocket v1.4.0 // indirect
 	github.com/grpc-ecosystem/go-grpc-middleware v1.0.0 // indirect
@@ -129,15 +123,15 @@ require (
 	go.uber.org/atomic v1.3.2 // indirect
 	go.uber.org/multierr v1.1.0 // indirect
 	go.uber.org/zap v1.9.1 // indirect
-	golang.org/x/crypto v0.0.0-20190701094942-4def268fd1a4
-	golang.org/x/net v0.0.0-20191009170851-d66e71096ffb
+	golang.org/x/crypto v0.0.0-20191202143827-86a70503ff7e
+	golang.org/x/net v0.0.0-20191126235420-ef20fe5d7933
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
-	golang.org/x/sys v0.0.0-20190804053845-51ab0e2deafa
-	golang.org/x/tools v0.0.0-20190628153133-6cdbf07be9d0
+	golang.org/x/sys v0.0.0-20191128015809-6d18c012aee9
+	golang.org/x/tools v0.0.0-20191203134012-c197fd4bf371
 	google.golang.org/api v0.9.0
 	google.golang.org/grpc v1.21.1
 	gopkg.in/ini.v1 v1.42.0 // indirect
-	gopkg.in/yaml.v2 v2.2.4
+	gopkg.in/yaml.v2 v2.2.7
 )
 
 go 1.12
