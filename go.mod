@@ -1,12 +1,13 @@
 module github.com/hashicorp/terraform
 
+replace github.com/hashicorp/terraform-plugin-sdk => github.com/openshift/hashicorp-terraform-plugin-sdk v1.6.1-0.20200204204920-eed752c479af // Pin to fork with public rpc types
+
 require (
 	cloud.google.com/go v0.45.1
 	github.com/Azure/azure-sdk-for-go v36.2.0+incompatible
 	github.com/Azure/go-autorest/autorest v0.9.2
 	github.com/abdullin/seq v0.0.0-20160510034733-d5467c17e7af // indirect
 	github.com/agext/levenshtein v1.2.2
-	github.com/agl/ed25519 v0.0.0-20150830182803-278e1ec8e8a6 // indirect
 	github.com/aliyun/alibaba-cloud-sdk-go v0.0.0-20190329064014-6e358769c32a
 	github.com/aliyun/aliyun-oss-go-sdk v0.0.0-20190103054945-8205d1f41e70
 	github.com/aliyun/aliyun-tablestore-go-sdk v4.1.2+incompatible
@@ -15,7 +16,6 @@ require (
 	github.com/apparentlymart/go-versions v0.0.2-0.20180815153302-64b99f7cb171
 	github.com/armon/circbuf v0.0.0-20190214190532-5111143e8da2
 	github.com/armon/go-metrics v0.0.0-20190430140413-ec5e00d3c878 // indirect
-	github.com/armon/go-radix v1.0.0 // indirect
 	github.com/aws/aws-sdk-go v1.25.3
 	github.com/baiyubin/aliyun-sts-go-sdk v0.0.0-20180326062324-cfa1a18b161f // indirect
 	github.com/blang/semver v3.5.1+incompatible
@@ -38,7 +38,6 @@ require (
 	github.com/golang/groupcache v0.0.0-20180513044358-24b0969c4cb7 // indirect
 	github.com/golang/mock v1.3.1
 	github.com/golang/protobuf v1.3.2
-	github.com/golang/snappy v0.0.1 // indirect
 	github.com/google/go-cmp v0.3.1
 	github.com/google/uuid v1.1.1
 	github.com/gophercloud/gophercloud v0.7.1-0.20191210042042-7aa2e52d21f9
@@ -70,16 +69,15 @@ require (
 	github.com/hashicorp/hcl/v2 v2.3.0
 	github.com/hashicorp/hil v0.0.0-20190212112733-ab17b08d6590
 	github.com/hashicorp/terraform-config-inspect v0.0.0-20191212124732-c6ae6269b9d7
+	github.com/hashicorp/terraform-plugin-sdk v0.0.0-00010101000000-000000000000
 	github.com/hashicorp/terraform-svchost v0.0.0-20191011084731-65d371908596
 	github.com/hashicorp/vault v0.10.4
-	github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d // indirect
 	github.com/jmespath/go-jmespath v0.0.0-20180206201540-c2b33e8439af
 	github.com/jonboulle/clockwork v0.1.0 // indirect
 	github.com/joyent/triton-go v0.0.0-20180628001255-830d2b111e62
 	github.com/json-iterator/go v1.1.5 // indirect
 	github.com/jtolds/gls v4.2.1+incompatible // indirect
 	github.com/kardianos/osext v0.0.0-20190222173326-2bc1f35cddc0
-	github.com/keybase/go-crypto v0.0.0-20161004153544-93f5b35093ba // indirect
 	github.com/lib/pq v1.0.0
 	github.com/lusis/go-artifactory v0.0.0-20160115162124-7e4ce345df82
 	github.com/masterzen/winrm v0.0.0-20190223112901-5e5c9a7fe54b
@@ -106,10 +104,9 @@ require (
 	github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d // indirect
 	github.com/smartystreets/goconvey v0.0.0-20180222194500-ef6db91d284a // indirect
 	github.com/soheilhy/cmux v0.1.4 // indirect
-	github.com/spf13/afero v1.2.1
+	github.com/spf13/afero v1.2.2
 	github.com/tmc/grpc-websocket-proxy v0.0.0-20171017195756-830351dc03c6 // indirect
 	github.com/ugorji/go v0.0.0-20180813092308-00b869d2f4a5 // indirect
-	github.com/vmihailenco/msgpack v4.0.1+incompatible // indirect
 	github.com/xanzy/ssh-agent v0.2.1
 	github.com/xiang90/probing v0.0.0-20160813154853-07dd2e8dfe18 // indirect
 	github.com/xlab/treeprint v0.0.0-20161029104018-1d6e34225557
@@ -128,7 +125,5 @@ require (
 	gopkg.in/ini.v1 v1.42.0 // indirect
 	gopkg.in/yaml.v2 v2.2.7
 )
-
-replace github.com/Azure/go-autorest => github.com/Azure/go-autorest v13.3.1+incompatible
 
 go 1.12
