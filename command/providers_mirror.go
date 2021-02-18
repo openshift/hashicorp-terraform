@@ -12,7 +12,7 @@ import (
 	"github.com/hashicorp/go-getter"
 	"github.com/hashicorp/terraform/httpclient"
 	"github.com/hashicorp/terraform/internal/getproviders"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 // ProvidersMirrorCommand is a Command implementation that implements the

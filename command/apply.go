@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform/backend"
 	"github.com/hashicorp/terraform/repl"
 	"github.com/hashicorp/terraform/states"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 // ApplyCommand is a Command implementation that applies a Terraform

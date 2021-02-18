@@ -13,7 +13,7 @@ import (
 	"github.com/hashicorp/terraform/plans/objchange"
 	"github.com/hashicorp/terraform/providers"
 	"github.com/hashicorp/terraform/states"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 // EvalRefresh is an EvalNode implementation that does a refresh for

@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform/plans/objchange"
 	"github.com/hashicorp/terraform/providers"
 	"github.com/hashicorp/terraform/states"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 // EvalCheckPlannedChange is an EvalNode implementation that produces errors

@@ -21,7 +21,7 @@ import (
 	"github.com/hashicorp/terraform/states/remote"
 	"github.com/hashicorp/terraform/states/statemgr"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 	tfversion "github.com/hashicorp/terraform/version"
 	"github.com/mitchellh/cli"
 	"github.com/mitchellh/colorstring"

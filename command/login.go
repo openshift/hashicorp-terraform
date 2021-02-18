@@ -21,7 +21,7 @@ import (
 	"github.com/hashicorp/terraform/command/cliconfig"
 	"github.com/hashicorp/terraform/httpclient"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 
 	uuid "github.com/hashicorp/go-uuid"
 	"golang.org/x/oauth2"

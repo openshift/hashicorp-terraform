@@ -14,7 +14,7 @@ import (
 	"github.com/hashicorp/terraform/configs/hcl2shim"
 	"github.com/hashicorp/terraform/states"
 	"github.com/hashicorp/terraform/states/statemgr"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 // TestBackendConfig validates and configures the backend with the

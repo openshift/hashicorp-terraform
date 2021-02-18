@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform/registry"
 	"github.com/hashicorp/terraform/registry/regsrc"
 	"github.com/hashicorp/terraform/registry/response"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 type ModuleInstaller struct {

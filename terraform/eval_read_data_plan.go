@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/terraform/plans"
 	"github.com/hashicorp/terraform/plans/objchange"
 	"github.com/hashicorp/terraform/states"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 // evalReadDataPlan is an EvalNode implementation that deals with the main part

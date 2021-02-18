@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/terraform/backend"
 	"github.com/hashicorp/terraform/helper/wrappedstreams"
 	"github.com/hashicorp/terraform/repl"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 
 	"github.com/mitchellh/cli"
 )

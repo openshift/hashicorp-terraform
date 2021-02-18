@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform/internal/getproviders"
 	"github.com/hashicorp/terraform/moduledeps"
 	"github.com/hashicorp/terraform/plugin/discovery"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 // A Config is a node in the tree of modules within a configuration.

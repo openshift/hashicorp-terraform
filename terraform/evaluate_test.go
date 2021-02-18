@@ -13,7 +13,7 @@ import (
 	"github.com/hashicorp/terraform/experiments"
 	"github.com/hashicorp/terraform/plans"
 	"github.com/hashicorp/terraform/states"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 func TestEvaluatorGetTerraformAttr(t *testing.T) {

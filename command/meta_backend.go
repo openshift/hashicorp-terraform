@@ -23,7 +23,7 @@ import (
 	"github.com/hashicorp/terraform/plans"
 	"github.com/hashicorp/terraform/states/statemgr"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 	"github.com/zclconf/go-cty/cty"
 	ctyjson "github.com/zclconf/go-cty/cty/json"
 

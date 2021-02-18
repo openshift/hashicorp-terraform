@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/terraform/plans"
 	"github.com/hashicorp/terraform/plans/internal/planproto"
 	"github.com/hashicorp/terraform/states"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 	"github.com/hashicorp/terraform/version"
 )
 

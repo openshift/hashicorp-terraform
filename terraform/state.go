@@ -27,7 +27,7 @@ import (
 	"github.com/hashicorp/terraform/configs/configschema"
 	"github.com/hashicorp/terraform/configs/hcl2shim"
 	"github.com/hashicorp/terraform/plans"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 	tfversion "github.com/hashicorp/terraform/version"
 	"github.com/mitchellh/copystructure"
 	"github.com/zclconf/go-cty/cty"

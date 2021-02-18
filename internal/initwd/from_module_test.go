@@ -13,7 +13,7 @@ import (
 	"github.com/hashicorp/terraform/configs/configload"
 	"github.com/hashicorp/terraform/internal/copy"
 	"github.com/hashicorp/terraform/registry"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 func TestDirFromModule_registry(t *testing.T) {
