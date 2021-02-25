@@ -6,7 +6,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/hashicorp/terraform/helper/schema"
-	proto "github.com/hashicorp/terraform/internal/tfplugin5"
+	proto "github.com/hashicorp/terraform-plugin-sdk/tfplugin5"
 	"github.com/hashicorp/terraform/plugin/convert"
 	"github.com/hashicorp/terraform/terraform"
 	"github.com/zclconf/go-cty/cty"

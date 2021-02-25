@@ -23,7 +23,7 @@ import (
 	"github.com/hashicorp/terraform/internal/providercache"
 	"github.com/hashicorp/terraform/states"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 	tfversion "github.com/hashicorp/terraform/version"
 )
 

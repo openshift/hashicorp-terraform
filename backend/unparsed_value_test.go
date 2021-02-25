@@ -9,7 +9,7 @@ import (
 
 	"github.com/hashicorp/terraform/configs"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 func TestParseVariableValuesUndeclared(t *testing.T) {

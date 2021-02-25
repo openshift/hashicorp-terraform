@@ -3,7 +3,7 @@ package terraform
 import (
 	"github.com/hashicorp/terraform/addrs"
 	"github.com/hashicorp/terraform/states"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 // ImportOpts are used as the configuration for Import.

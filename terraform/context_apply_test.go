@@ -26,7 +26,7 @@ import (
 	"github.com/hashicorp/terraform/providers"
 	"github.com/hashicorp/terraform/provisioners"
 	"github.com/hashicorp/terraform/states"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 	"github.com/zclconf/go-cty/cty"
 	"github.com/zclconf/go-cty/cty/gocty"
 )

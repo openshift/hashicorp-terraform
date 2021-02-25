@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform/configs/configload"
 	"github.com/hashicorp/terraform/plans"
 	"github.com/hashicorp/terraform/states/statefile"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 const tfstateFilename = "tfstate"

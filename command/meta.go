@@ -28,7 +28,7 @@ import (
 	"github.com/hashicorp/terraform/providers"
 	"github.com/hashicorp/terraform/provisioners"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 	"github.com/mitchellh/cli"
 	"github.com/mitchellh/colorstring"
 )

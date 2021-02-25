@@ -17,7 +17,7 @@ import (
 	"github.com/hashicorp/terraform/helper/logging"
 	"github.com/hashicorp/terraform/internal/copy"
 	"github.com/hashicorp/terraform/registry"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 func TestMain(m *testing.M) {

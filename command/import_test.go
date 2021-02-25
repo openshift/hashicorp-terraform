@@ -15,7 +15,7 @@ import (
 	"github.com/hashicorp/terraform/internal/copy"
 	"github.com/hashicorp/terraform/providers"
 	"github.com/hashicorp/terraform/terraform"
-	"github.com/hashicorp/terraform/tfdiags"
+	"github.com/hashicorp/terraform-plugin-sdk/tfdiags"
 )
 
 func TestImport(t *testing.T) {
